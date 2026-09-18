@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BsAs Colective</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#F9F3DB;
+    --bg:#151310;
+    --bg-panel:#1E1B16;
+    --red:#E0070F;
+    --orange:#FF340C;
+    --magenta:#F03172;
+    --pink:#E990A2;
+    --gold:#FFAE00;
+    --chartreuse:#CAC307;
+    --teal:#0F4A42;
+    --cream:#F9F3DB;
+    --celeste:#9AB3E9;
+    --line: rgba(249,243,219,0.85);
+  }
+  :root[data-theme="dark"]{
+    --ink:#F9F3DB;
+    --bg:#151310;
+    --bg-panel:#1E1B16;
+    --red:#E0070F;
+    --orange:#FF340C;
+    --magenta:#F03172;
+    --pink:#E990A2;
+    --gold:#FFAE00;
+    --chartreuse:#CAC307;
+    --teal:#0F4A42;
+    --cream:#F9F3DB;
+    --celeste:#9AB3E9;
+    --line: rgba(249,243,219,0.85);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#F9F3DB;
+      --bg:#151310;
+      --bg-panel:#1E1B16;
+      --red:#E0070F;
+      --orange:#FF340C;
+      --magenta:#F03172;
+      --pink:#E990A2;
+      --gold:#FFAE00;
+      --chartreuse:#CAC307;
+      --teal:#0F4A42;
+      --cream:#F9F3DB;
+    --celeste:#9AB3E9;
+      --line: rgba(249,243,219,0.85);
+    }
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    line-height:1.4;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 clamp(20px,5vw,56px);}
+  .hdisplay{font-family:'Space Grotesk', sans-serif; font-weight:700;}
+
+  /* NAV */
+  nav{position:sticky; top:0; z-index:40; background:var(--bg); border-bottom:3px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px clamp(20px,5vw,56px);}
+  .brand{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:19px;}
+  .navlinks{display:none; gap:22px; font-size:14px; font-weight:600;}
+  .navlinks a{text-decoration:none;}
+  @media(min-width:700px){.navlinks{display:flex;}}
+
+  /* HERO */
+  .hero{padding: clamp(40px,7vw,72px) 0 clamp(32px,5vw,48px); border-bottom:3px solid var(--line);}
+  .marquee{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:clamp(30px,7.2vw,74px);
+    line-height:1.02;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  .marquee span{display:inline-block; padding:0 0.12em;}
+  .m-gold{color:var(--gold);}
+  .m-pink{color:var(--pink);}
+  .m-chartreuse{color:var(--chartreuse);}
+  .m-orange{color:var(--orange);}
+  .m-magenta{color:var(--magenta);}
+  .m-red{color:var(--red);}
+  .m-cream{color:var(--cream);}
+  .m-celeste{color:var(--celeste);}
+  .hero-sub{
+    font-size:clamp(15px,2vw,18px);
+    font-weight:600;
+    max-width:46ch;
+    margin:22px 0 0;
+  }
+  .hero-cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:26px;}
+  .btn{
+    font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:15px;
+    padding:13px 24px; text-decoration:none; display:inline-block;
+    border:3px solid var(--ink); border-radius:2px;
+  }
+  .btn-solid{background:var(--ink); color:var(--bg);}
+  .btn-outline{background:transparent; color:var(--ink);}
+
+  /* CHIPS - para quien */
+  .chipbar{display:flex; flex-wrap:wrap; gap:10px; margin-top:30px;}
+  .chip{
+    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:13px;
+    border:2.5px solid var(--ink); border-radius:100px; padding:7px 16px;
+  }
+
+  /* SERVICIOS */
+  .servicios{padding:clamp(40px,7vw,72px) 0; border-bottom:3px solid var(--line);}
+  .sec-title{
+    font-family:'Space Grotesk',sans-serif; font-weight:700;
+    font-size:clamp(24px,3.4vw,34px); margin:0 0 24px;
+  }
+  .tiles{display:grid; grid-template-columns:1fr; gap:14px;}
+  @media(min-width:640px){.tiles{grid-template-columns:1fr 1fr;}}
+  @media(min-width:980px){.tiles{grid-template-columns:repeat(3,1fr);}}
+  .tile{
+    border-radius:4px;
+    padding:22px 20px; min-height:150px;
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .tile h3{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:21px; margin:0 0 6px;}
+  .tile .who{font-size:13px; font-weight:600; opacity:0.75;}
+  .t-gold{background:var(--gold); color:#151310;}
+  .t-pink{background:var(--pink); color:#151310;}
+  .t-teal{background:var(--teal); color:var(--cream);}
+  .t-orange{background:var(--orange); color:var(--cream);}
+  .t-red{background:var(--red); color:var(--cream);}
+  .t-chartreuse{background:var(--chartreuse); color:#151310;}
+  .t-celeste{background:var(--celeste); color:#151310;}
+
+  /* TRABAJOS */
+  .trabajos{padding:clamp(40px,7vw,72px) 0; border-bottom:3px solid var(--line);}
+  .gallery{display:grid; grid-template-columns:repeat(2,1fr); gap:12px;}
+  @media(min-width:640px){.gallery{grid-template-columns:repeat(4,1fr);}}
+  .slot{
+    aspect-ratio:4/5; border:3px dashed var(--line); border-radius:4px;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    padding:10px;
+  }
+  .slot span{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:12px;}
+
+  /* CONTACTO */
+  .contact{padding:clamp(40px,7vw,80px) 0;}
+  .contact-card{
+    border:3px solid var(--ink); border-radius:4px; background:var(--bg-panel);
+    padding:clamp(24px,4vw,36px);
+    display:grid; grid-template-columns:1fr; gap:22px;
+  }
+  @media(min-width:760px){.contact-card{grid-template-columns:1.1fr 1fr;}}
+  .contact-card h2{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(24px,3.6vw,34px); margin:0;}
+  .cdetail{font-size:13px; font-weight:700; opacity:0.6; margin-bottom:4px;}
+  .cvalue{font-size:16px; font-weight:600; margin-bottom:16px;}
+
+  footer{border-top:3px solid var(--line); padding:20px 0 30px; font-size:13px; font-weight:600; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">BsAs Colective</div>
+    <div class="navlinks">
+      <a href="#servicios">Servicios</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1 class="marquee">
+      <span class="m-gold">PROPS</span><span class="m-pink">VESTUARIO</span><span class="m-chartreuse">REALIZACIÓN</span><br>
+      <span class="m-orange">ESCENOGRAFÍA</span><span class="m-magenta">DIR. DE ARTE</span><span class="m-red">MERCH</span><span class="m-celeste">DISEÑO</span>
+    </h1>
+    <p class="hero-sub">Todo lo que necesita un proyecto, en un solo llamado.</p>
+    <div class="chipbar">
+      <span class="chip">Eventos sociales</span>
+      <span class="chip">Corporativos</span>
+      <span class="chip">Audiovisual y series</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#servicios" class="btn btn-solid">Ver servicios</a>
+      <a href="#contacto" class="btn btn-outline">Contactar</a>
+    </div>
+  </div>
+</header>
+
+<section class="servicios" id="servicios">
+  <div class="wrap">
+    <h2 class="sec-title">Qué hacemos</h2>
+    <div class="tiles">
+      <div class="tile t-gold">
+        <h3>Props &amp; ambientación</h3>
+        <div class="who">Rental de props, utilería y pérgolas de madera — Edna</div>
+      </div>
+      <div class="tile t-pink">
+        <h3>Vestuario</h3>
+        <div class="who">Eventos y series — Daira</div>
+      </div>
+      <div class="tile t-celeste">
+        <h3>Realización &amp; escenografía</h3>
+        <div class="who">Diseño de escenografías y realización de props — Maggie</div>
+      </div>
+      <div class="tile t-orange">
+        <h3>Dirección de arte</h3>
+        <div class="who">Eventos, renders y diseño — Malen</div>
+      </div>
+      <div class="tile t-red">
+        <h3>Merch personalizado</h3>
+        <div class="who">Almohadones, botellas y objetos a medida — equipo</div>
+      </div>
+      <div class="tile t-chartreuse">
+        <h3>¿Necesitás más de uno?</h3>
+        <div class="who">Armamos equipo a medida del proyecto</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trabajos" id="trabajos">
+  <div class="wrap">
+    <h2 class="sec-title">Qué hicimos</h2>
+    <div class="gallery">
+      <div class="slot"><span>PROPS</span></div>
+      <div class="slot"><span>VESTUARIO</span></div>
+      <div class="slot"><span>ESCENOGRAFÍA</span></div>
+      <div class="slot"><span>DIR. DE ARTE</span></div>
+      <div class="slot"><span>MERCH</span></div>
+      <div class="slot"><span>PROPS</span></div>
+      <div class="slot"><span>VESTUARIO</span></div>
+      <div class="slot"><span>EVENTOS</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="contact-card">
+      <div>
+        <h2>Contanos qué estás armando.</h2>
+      </div>
+      <div>
+        <div class="cdetail">CONTACTO GENERAL</div>
+        <div class="cvalue">+54 11 5848-8898<br>bsascolective@gmail.com</div>
+        <div class="cdetail">INSTAGRAM</div>
+        <div class="cvalue">@bsascolective (a confirmar)</div>
+        <div class="cdetail">DÓNDE</div>
+        <div class="cvalue">Buenos Aires, Argentina</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:8px;">
+    <span>BsAs Colective — Edna · Daira · Maggie · Malen</span>
+    <span>Buenos Aires</span>
+  </div>
+</footer>
+
+</body>
+</html>
